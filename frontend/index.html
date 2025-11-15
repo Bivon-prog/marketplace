@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Platform - Services, Digital Products & Niche Markets</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">MarketHub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pages/services.html">Local Services</a></li>
+                <li><a href="pages/digital.html">Digital Products</a></li>
+                <li><a href="pages/niche.html">Niche Markets</a></li>
+                <li><a href="#" id="loginBtn">Login</a></li>
+                <li><a href="#" id="signupBtn" class="btn-primary">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your All-in-One Marketplace Platform</h1>
+            <p>Connect with local services, buy digital products, and explore specialized markets</p>
+            <div class="search-bar">
+                <input type="text" id="mainSearch" placeholder="What are you looking for?">
+                <button class="btn-primary">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="marketplace-types">
+        <div class="container">
+            <h2>Explore Our Marketplaces</h2>
+            <div class="cards-grid">
+                <div class="card" onclick="location.href='pages/services.html'">
+                    <div class="card-icon">🔧</div>
+                    <h3>Local Services</h3>
+                    <p>Find trusted professionals for plumbing, cleaning, tutoring, and more</p>
+                    <a href="pages/services.html" class="card-link">Browse Services →</a>
+                </div>
+                <div class="card" onclick="location.href='pages/digital.html'">
+                    <div class="card-icon">📦</div>
+                    <h3>Digital Products</h3>
+                    <p>Download templates, eBooks, UI kits, and digital assets instantly</p>
+                    <a href="pages/digital.html" class="card-link">Shop Digital →</a>
+                </div>
+                <div class="card" onclick="location.href='pages/niche.html'">
+                    <div class="card-icon">🎯</div>
+                    <h3>Niche Markets</h3>
+                    <p>Specialized marketplaces for students, developers, creators, and more</p>
+                    <a href="pages/niche.html" class="card-link">Explore Niches →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose MarketHub?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h4>💳 Easy Payments</h4>
+                    <p>MPESA, PayPal, and card payments supported</p>
+                </div>
+                <div class="feature">
+                    <h4>⭐ Verified Providers</h4>
+                    <p>All service providers are verified and rated</p>
+                </div>
+                <div class="feature">
+                    <h4>⚡ Instant Downloads</h4>
+                    <p>Get digital products immediately after purchase</p>
+                </div>
+                <div class="feature">
+                    <h4>🛡️ Secure Transactions</h4>
+                    <p>Your payments and data are protected</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MarketHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Login</h2>
+            <form id="authForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <div id="extraFields"></div>
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+            <p id="switchAuth"></p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

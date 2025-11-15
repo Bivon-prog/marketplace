@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niche Markets - MarketHub</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">MarketHub</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Local Services</a></li>
+                <li><a href="digital.html">Digital Products</a></li>
+                <li><a href="niche.html">Niche Markets</a></li>
+                <li><a href="#" id="loginBtn">Login</a></li>
+                <li><a href="#" id="signupBtn" class="btn-primary">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 2rem 0;">
+        <div class="container">
+            <h1>Niche Markets</h1>
+            <p>Specialized marketplaces for specific needs</p>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Choose Your Niche</h2>
+            <div class="cards-grid">
+                <div class="card" onclick="loadNiche('resume')">
+                    <div class="card-icon">📄</div>
+                    <h3>Resume & Career</h3>
+                    <p>CV templates, cover letters, portfolio designs</p>
+                </div>
+                <div class="card" onclick="loadNiche('business')">
+                    <div class="card-icon">💼</div>
+                    <h3>Business Tools</h3>
+                    <p>Invoices, contracts, business plans</p>
+                </div>
+                <div class="card" onclick="loadNiche('student')">
+                    <div class="card-icon">🎓</div>
+                    <h3>Student Resources</h3>
+                    <p>Notes, study guides, past papers</p>
+                </div>
+                <div class="card" onclick="loadNiche('creator')">
+                    <div class="card-icon">🎨</div>
+                    <h3>Creator Tools</h3>
+                    <p>Graphics, presets, templates</p>
+                </div>
+                <div class="card" onclick="loadNiche('developer')">
+                    <div class="card-icon">💻</div>
+                    <h3>Developer Resources</h3>
+                    <p>UI kits, code snippets, APIs</p>
+                </div>
+            </div>
+
+            <div id="nicheContent" style="margin-top: 3rem; display: none;">
+                <h2 id="nicheTitle" style="text-align: center; margin-bottom: 2rem;"></h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <input type="text" id="searchInput" placeholder="Search...">
+                        <select id="sortFilter">
+                            <option value="popular">Most Popular</option>
+                            <option value="recent">Most Recent</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                        <button class="btn-primary" onclick="filterNiche()">Apply</button>
+                    </div>
+                </div>
+                <div id="nicheGrid" class="listings-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/niche.js"></script>
+</body>
+</html>

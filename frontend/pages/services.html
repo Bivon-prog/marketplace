@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Services - MarketHub</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">MarketHub</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Local Services</a></li>
+                <li><a href="digital.html">Digital Products</a></li>
+                <li><a href="niche.html">Niche Markets</a></li>
+                <li><a href="#" id="loginBtn">Login</a></li>
+                <li><a href="#" id="signupBtn" class="btn-primary">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 2rem 0;">
+        <div class="container">
+            <h1>Local Services</h1>
+            <p>Find trusted professionals in your area</p>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <div class="filters">
+                <div class="filter-group">
+                    <input type="text" id="searchInput" placeholder="Search services...">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="home">Home Services</option>
+                        <option value="personal">Personal Services</option>
+                        <option value="tech">Tech Services</option>
+                        <option value="business">Business Services</option>
+                    </select>
+                    <input type="text" id="locationFilter" placeholder="Location">
+                    <select id="priceFilter">
+                        <option value="">Any Price</option>
+                        <option value="low">$ - Budget</option>
+                        <option value="medium">$$ - Moderate</option>
+                        <option value="high">$$$ - Premium</option>
+                    </select>
+                    <button class="btn-primary" onclick="filterServices()">Apply Filters</button>
+                </div>
+            </div>
+
+            <div id="servicesGrid" class="listings-grid">
+                <!-- Services will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2>Book Service</h2>
+            <form id="bookingForm">
+                <input type="date" id="bookingDate" required>
+                <input type="time" id="bookingTime" required>
+                <textarea id="bookingNotes" placeholder="Additional notes..." rows="4"></textarea>
+                <button type="submit" class="btn-primary">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/services.js"></script>
+</body>
+</html>

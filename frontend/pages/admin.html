@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - MarketHub</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .stat-label {
+            color: var(--text);
+            margin-top: 0.5rem;
+        }
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            color: var(--text);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--light);
+            font-weight: 600;
+        }
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-active {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">MarketHub Admin</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="admin.html">Dashboard</a></li>
+                <li><a href="#" id="logoutBtn" class="btn-primary">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalUsers">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalServices">0</div>
+                    <div class="stat-label">Active Services</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalProducts">0</div>
+                    <div class="stat-label">Digital Products</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalRevenue">$0</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('users')">Users</button>
+                <button class="tab" onclick="switchTab('services')">Services</button>
+                <button class="tab" onclick="switchTab('products')">Products</button>
+                <button class="tab" onclick="switchTab('bookings')">Bookings</button>
+                <button class="tab" onclick="switchTab('purchases')">Purchases</button>
+            </div>
+
+            <div id="users" class="tab-content active">
+                <h2>User Management</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Type</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable">
+                        <tr><td colspan="5">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="services" class="tab-content">
+                <h2>Service Listings</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Provider</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="servicesTable">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="products" class="tab-content">
+                <h2>Digital Products</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Seller</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Downloads</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTable">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="bookings" class="tab-content">
+                <h2>Service Bookings</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTable">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="purchases" class="tab-content">
+                <h2>Product Purchases</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Payment Method</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="purchasesTable">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        async function loadDashboardStats() {
+            // Mock data - replace with actual API calls
+            document.getElementById('totalUsers').textContent = '1,234';
+            document.getElementById('totalServices').textContent = '456';
+            document.getElementById('totalProducts').textContent = '789';
+            document.getElementById('totalRevenue').textContent = '$12,345';
+        }
+
+        async function loadUsers() {
+            // Mock data - replace with actual API call
+            const usersTable = document.getElementById('usersTable');
+            usersTable.innerHTML = `
+                <tr>
+                    <td>John Provider</td>
+                    <td>provider@test.com</td>
+                    <td><span class="status-badge status-active">Provider</span></td>
+                    <td>2024-01-15</td>
+                    <td><button class="btn-small btn-primary">View</button></td>
+                </tr>
+                <tr>
+                    <td>Jane Seller</td>
+                    <td>seller@test.com</td>
+                    <td><span class="status-badge status-active">Seller</span></td>
+                    <td>2024-01-20</td>
+                    <td><button class="btn-small btn-primary">View</button></td>
+                </tr>
+            `;
+        }
+
+        async function loadServices() {
+            const servicesTable = document.getElementById('servicesTable');
+            try {
+                const response = await fetch(`${API_URL}/services`);
+                const services = await response.json();
+                
+                servicesTable.innerHTML = services.map(service => `
+                    <tr>
+                        <td>${service.title}</td>
+                        <td>Provider #${service.provider_id.substring(0, 8)}</td>
+                        <td>${service.category}</td>
+                        <td>$${service.price}</td>
+                        <td><span class="status-badge status-active">Active</span></td>
+                        <td><button class="btn-small btn-primary">Edit</button></td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                servicesTable.innerHTML = '<tr><td colspan="6">Error loading services</td></tr>';
+            }
+        }
+
+        async function loadProducts() {
+            const productsTable = document.getElementById('productsTable');
+            try {
+                const response = await fetch(`${API_URL}/products`);
+                const products = await response.json();
+                
+                productsTable.innerHTML = products.map(product => `
+                    <tr>
+                        <td>${product.title}</td>
+                        <td>Seller #${product.seller_id.substring(0, 8)}</td>
+                        <td>${product.category}</td>
+                        <td>$${product.price}</td>
+                        <td>${product.downloads}</td>
+                        <td><button class="btn-small btn-primary">Edit</button></td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                productsTable.innerHTML = '<tr><td colspan="6">Error loading products</td></tr>';
+            }
+        }
+
+        document.getElementById('logoutBtn').onclick = () => {
+            localStorage.clear();
+            window.location.href = '../index.html';
+        };
+
+        // Load initial data
+        loadDashboardStats();
+        loadUsers();
+        loadServices();
+        loadProducts();
+    </script>
+</body>
+</html>

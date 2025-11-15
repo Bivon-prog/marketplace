@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Products - MarketHub</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">MarketHub</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Local Services</a></li>
+                <li><a href="digital.html">Digital Products</a></li>
+                <li><a href="niche.html">Niche Markets</a></li>
+                <li><a href="#" id="loginBtn">Login</a></li>
+                <li><a href="#" id="signupBtn" class="btn-primary">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 2rem 0;">
+        <div class="container">
+            <h1>Digital Products</h1>
+            <p>Download templates, eBooks, and digital assets instantly</p>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <div class="filters">
+                <div class="filter-group">
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="business">Business Tools</option>
+                        <option value="career">Career & Personal Branding</option>
+                        <option value="creative">Creative & Design</option>
+                        <option value="development">Development</option>
+                        <option value="education">Education</option>
+                        <option value="productivity">Productivity</option>
+                    </select>
+                    <select id="priceFilter">
+                        <option value="">Any Price</option>
+                        <option value="free">Free</option>
+                        <option value="0-10">$0 - $10</option>
+                        <option value="10-50">$10 - $50</option>
+                        <option value="50+">$50+</option>
+                    </select>
+                    <button class="btn-primary" onclick="filterProducts()">Apply Filters</button>
+                </div>
+            </div>
+
+            <div id="productsGrid" class="listings-grid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePurchaseModal()">&times;</span>
+            <h2>Purchase Product</h2>
+            <div id="productDetails"></div>
+            <form id="purchaseForm">
+                <select id="paymentMethod" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="mpesa">MPESA</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="card">Credit/Debit Card</option>
+                </select>
+                <button type="submit" class="btn-primary">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/digital.js"></script>
+</body>
+</html>
